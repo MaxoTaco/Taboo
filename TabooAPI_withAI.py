@@ -1,19 +1,20 @@
 from openai import OpenAI
 
-base_url = "https://api.aimlapi.com/v1"
+api_key = "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"
 
-# Insert your AIML API Key in the quotation marks instead of my_key:
-api_key = "bca451b5d7304041ba4d09a32fe7247a" 
 
-system_prompt = "You are a person from 2025, i need you to make cards that are going to be used to play the taboo game. How it works is there is one word that the player is given and "
+system_prompt = '''You are a person from 2025, i need you to make cards 
+that are going to be used to play the taboo game. How it works is there
+is one word that the player is given and four words that are similar or 
+would help the player get the main word'''
 user_prompt = "Give me a random word and four synonyms"
 
-api = OpenAI(api_key=api_key, base_url=base_url)
+api = OpenAI(api_key=api_key)
 
 
 def main():
     completion = api.chat.completions.create(
-        model="mistralai/Mistral-7B-Instruct-v0.2",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
