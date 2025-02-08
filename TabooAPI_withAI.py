@@ -5,7 +5,7 @@ base_url = "https://api.aimlapi.com/v1"
 # Insert your AIML API Key in the quotation marks instead of my_key:
 api_key = "bca451b5d7304041ba4d09a32fe7247a" 
 
-system_prompt = "You are a old western cowboy"
+system_prompt = "You are a person from 2025, i need you to make cards that are going to be used to play the taboo game. How it works is there is one word that the player is given and "
 user_prompt = "Give me a random word and four synonyms"
 
 api = OpenAI(api_key=api_key, base_url=base_url)
