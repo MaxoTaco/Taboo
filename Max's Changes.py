@@ -1,19 +1,17 @@
 from openai import OpenAI
 
-base_url = "https://api.aimlapi.com/v1"
+api_key = "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"
 
-# Insert your AIML API Key in the quotation marks instead of my_key:
-api_key = "sk-ijklmnopabcd5678ijklmnopabcd5678ijklmnop" 
 
-system_prompt = "You are a taboo AI"
-user_prompt = "Give me a five random words and nothing else, seperated by spaces, no punctuation"
+system_prompt = "You are a old western cowboy"
+user_prompt = "Give me a random word and four synonyms"
 
-api = OpenAI(api_key=api_key, base_url=base_url)
+api = OpenAI(api_key=api_key)
 
-#returns an array of words, the first being the title word, the rest being taboo words.
-def getWords():
+
+def main():
     completion = api.chat.completions.create(
-        model="mistralai/Mistral-7B-Instruct-v0.2",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -23,16 +21,10 @@ def getWords():
     )
 
     response = completion.choices[0].message.content
-    result = response.split(',')
+
+    print("User:", user_prompt)
+    print("AI:", response)
 
 
-
-
-    #response = ["Cat", "Mouse", "Pet", "Dog", "Whisker"]
-
-    #print("User:", user_prompt)
-    print(response)
-
-
-getWords()
-
+if __name__ == "__main__":
+    main()
