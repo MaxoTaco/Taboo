@@ -4,10 +4,15 @@ function TitleScreen() {
   const navigate = useNavigate();
 
   return (
-    <div className='page'>
-      <h1 className='title'>Taboo!</h1>
-      <div className='button-prompt'>
-        <button className="main-button" onClick={() => navigate("/create-game")}>
+    <div className="page">
+      <div className="title-box">
+        <label className="title">Taboo!</label>
+      </div>
+      <div className="button-prompt">
+        <button
+          className="main-button"
+          onClick={() => navigate("/create-game")}
+        >
           Create Game
         </button>
       </div>
