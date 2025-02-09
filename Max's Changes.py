@@ -3,16 +3,19 @@ from openai import OpenAI
 api_key = "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"
 
 
-system_prompt = '''You are a person from 2025, i need you to make cards 
-that are going to be used to play the taboo game. How it works is there
-is one word that the player is given and four words that are similar or 
-would help the player get the main word'''
-user_prompt = "Give me a random word and four synonyms"
+numberOfTabooWords = 5
+alreadyUsedWords = []
+
+system_prompt = '''You should give different words related to: a late evening alone in the tub'''
+user_prompt = '''Give me a list of five words. The first word is the main words.
+ The next four are the four closest words to the main word. Respond with no other text.
+   Seperate each word with a comma. Repeat this entire process five times, not repeating words. 
+   Don't number the words. Don't repeat the same word multiple times. Don't use any of the following words: ''' 
 
 api = OpenAI(api_key=api_key)
 
 
-def main():
+def prompt(system_prompt, user_prompt):
     completion = api.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -21,13 +24,40 @@ def main():
         ],
         temperature=0.7,
         max_tokens=256,
+        n=1
     )
 
     response = completion.choices[0].message.content
 
-    print("User:", user_prompt)
-    print("AI:", response)
+    return response
 
+
+
+def processResponse(response):  
+    return response.split(',')
+
+def printFullTaboo():
+    aiPrompt = (prompt('''Generate random words and synonyms with the theme of harry potter''', 
+           '''Give me a list of five words. The first word is the main words.
+ The next ''' + str(numberOfTabooWords) + ''' are the ''' + str(numberOfTabooWords) + ''' closest words to the main word. Respond with no other text.
+   Seperate each word with a comma.
+   Don't number the words. Don't repeat the same word multiple times. Avoid words related to the following words:''' + str(alreadyUsedWords)))
+    
+    response = processResponse(aiPrompt)
+    mainWord = response.pop(0)
+    tabooWords = response
+    print("The main word is: " + mainWord)
+    print("Don't use any of the following words: " + ' '.join(tabooWords))
+
+    alreadyUsedWords.append(mainWord)
 
 if __name__ == "__main__":
-    main()
+    for i in range(50):
+        printFullTaboo()
+
+    print(alreadyUsedWords)
+
+
+    
+    
+    
