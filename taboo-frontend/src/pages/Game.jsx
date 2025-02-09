@@ -21,12 +21,24 @@ const Game = () => {
   };
 
   return (
-    <div>
-      <h1>Taboo Game</h1> {/* Display the game title */}
+    <div className="page">
+      <div className="title-box">
+        <label className="title">Taboo Game</label> {/* Display the game title */}
+      </div>
       <WordCard word={words[index]} /> {/* Render the current word */}
-      <button onClick={() => {setScore(score + 1); nextWord;}}>✅ Correct</button>{" "}
-      {/* Increment score */}
-      <button onClick={nextWord}>⏩ Skip</button> {/* Move to the next word */}
+      <div className="correct-skip-buttons">
+        <button
+          onClick={() => {
+            setScore(score + 1);
+            nextWord;
+          }}
+        >
+          ✅ Correct
+        </button>{" "}
+        {/* Increment score */}
+        <button onClick={nextWord}>⏩ Skip</button>{" "}
+        {/* Move to the next word */}
+      </div>
       <p>Score: {score}</p> {/* Display the score */}
     </div>
   );

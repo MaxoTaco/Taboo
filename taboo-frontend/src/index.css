@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #f4f5f5;
+  background-color: #22195c;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -48,11 +48,18 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgba(184,84,73,255);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+label {
+  font-size: 3.2em;
+  font-weight: bold;
+  line-height: 1.1;
+  color: rgba(184,84,73,255);
 }
 
 @media (prefers-color-scheme: light) {
@@ -75,7 +82,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   text-align: center;
 }
 
@@ -83,18 +90,25 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   position: relative;
-  width: 20%;
-  background-color: #646cff;
+  width: auto;
 }
 
 .main-button {
-  width: auto;
+  width: 100%;
   padding: 0.6em 1.2em;
+}
+
+.title-box {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .title {
   font-size: 3.2em;
-  margin-bottom: 2rem;
 }
 
 .prompt {
@@ -103,8 +117,9 @@ button:focus-visible {
   background: #2b2b2b;
   padding: 10px;
   border-radius: 20px;
-  width: 100%;
+  width: 75%;
   max-width: 600px;
+  margin-bottom: 1rem;
 }
 
 .prompt input {
