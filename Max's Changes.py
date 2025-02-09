@@ -4,7 +4,7 @@ api_key = "sk-proj-Ka6AZbiaIH_AmwLfkgWQ_GKr8H0Rkj-uORxV9OB70Ui4BIlHuISyeqYXLpQqj
 
 
 number_of_taboo_words = 5
-theme = "harry potter"
+theme = "pirates of the carribean"
 
 
 already_used_words = []

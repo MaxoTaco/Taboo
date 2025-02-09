@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import random
+import TabooAPI_withAI
 
 app = Flask(__name__)
 
@@ -11,9 +12,9 @@ def home():
 def generate_taboo_cards():
     # Random generation logic (simplified here)
     words = [
-        ("Happy", ["Joyful", "Cheerful", "Content", "Elated"]),
-        ("Excited", ["Eager", "Energetic", "Thrilled", "Joyful"]),
-        # Add more word sets...
+        TabooAPI_withAI.printFullTaboo(),
+        TabooAPI_withAI.printFullTaboo(),
+        TabooAPI_withAI.printFullTaboo()
     ]
     # Select a random word set
     main_word, taboo_words = random.choice(words)
